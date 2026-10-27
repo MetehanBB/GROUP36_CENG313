@@ -5,7 +5,7 @@ This repository contains the coursework and machine learning pipeline for the **
 
 ## Team Members
 * **Metehan Bölükbaşı** - Student ID: `23118080031` - GitHub: `@metexx`
-* **Mustafa Karadeniz** - Student ID: `23118080030` - GitHub: `@MUSTAFA_GITHUB_KULLANICI_ADI`
+* **Mustafa Karadeniz** - Student ID: `23118080030` - GitHub: `@Mustafa-Karadeniz`
 
 ## Chosen Competition
 * **Name:** Deep Past Challenge - Translate Akkadian to English
