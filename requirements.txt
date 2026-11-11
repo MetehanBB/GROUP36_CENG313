@@ -1,1 +1,23 @@
-*
+pandas = CSV dosyalarını okumak, verileri DataFrame olarak işlemek ve sonuç tabloları oluşturmak için kullanıldı.
+
+sacrebleu = Çeviri sonuçlarını BLEU ve chrF/chrF++ metrikleriyle değerlendirmek için kullanıldı.
+
+scikit-learn = Veriyi eğitim ve doğrulama olarak bölmek, TF-IDF özellikleri çıkarmak ve benzerlik hesaplamak için kullanıldı.
+
+math = BLEU ve chrF++ skorlarının geometrik ortalamasını hesaplamak için kullanıldı.
+
+re = Metin temizleme sırasında düzenli ifadelerle gereksiz karakterleri ve boşlukları düzenlemek için kullanıldı.
+
+os = Çalışma dizinini, klasörleri ve dosya yollarını kontrol etmek için kullanıldı.
+
+subprocess = Git clone, git pull ve pip install gibi sistem komutlarını çalıştırmak için kullanıldı.
+
+sys = Python modül arama yoluna proje klasörünü eklemek için kullanıldı.
+
+numpy = Sayısal işlemler ve dizi işlemleri için kullanıldı.
+
+matplotlib = Grafik ve veri görselleştirmeleri oluşturmak için kullanıldı.
+
+seaborn = İstatistiksel veri görselleştirmeleri ve grafik stil ayarları için kullanıldı.
+
+collections = Counter sınıfı aracılığıyla elemanların tekrar sayılarını hesaplamak için kullanıldı.
