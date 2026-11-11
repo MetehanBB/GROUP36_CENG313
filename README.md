@@ -39,4 +39,40 @@ Train belge düzeyinde, test ise cümle düzeyindedir.
 ## Approach
 
 **Assignment 1 (EDA ve baseline):**
-- EDA: veri boyutları, eksik değerler, karakter uzunluğu dağılımları, en sık tokenlar, tekrar eden satırlar, uç değerler (en kısa/en uzun
+- EDA: veri boyutları, eksik değerler, karakter uzunluğu dağılımları, en sık tokenlar, tekrar eden satırlar, uç değerler (en kısa/en uzun örnekler), Akadca ve İngilizce uzunluk ilişkisi, `<gap>` işaretleri ve çelişkili tekrarlar
+- Üç basit baseline (`src/models.py`): Copy-input, sabit cümle, TF-IDF en yakın komşu
+- Aynı train/validation bölmesi (%80 / %20, `random_state=42`)
+
+**Assignment 2:** Önerilen çözüm, Aralık'ta eklenecek.
+
+## Results (Assignment 1, validation seti)
+
+| Baseline | BLEU | chrF |
+|---|---|---|
+| Copy-input | 1.29 | 10.55 |
+| Sabit cümle | 2.52 | 22.82 |
+| TF-IDF en yakın komşu | 15.49 | 35.51 |
+
+Skorlar `sacrebleu` ile ham BLEU ve chrF olarak hesaplanmıştır. Yarışmanın resmi metriği chrF++ ve BLEU geometrik ortalamasıdır.
+
+## How to Run
+
+1. `assignment1_eda_baseline.ipynb` dosyasını Google Colab'de aç (GitHub'dan: **Open in Colab**).
+2. **Çalışma zamanı → Tümünü çalıştır** de.
+3. İlk hücre repoyu otomatik klonlar ve `sacrebleu` kurar. Veri repoda hazırdır, ayrıca indirmek gerekmez.
+
+GPU Assignment 1 için gerekli değildir.
+
+## Progress Log
+
+- 2026-11-08: Mustafa veri dosyalarını repoya ekledi (`data files`, `Big Dataset` commit'leri).
+- 2026-11-09: Metehan Colab-GitHub bağlantısını kurdu; ilk EDA (veri boyutları, eksik değerler, uzunluk histogramları) ve üç baseline (Copy-input, sabit cümle, TF-IDF en yakın komşu) aynı train/validation bölmesiyle karşılaştırıldı; ilk notebook GitHub'a kaydedildi.
+- 2026-11-11: Notebook temizlendi, baseline kodları `src/models.py` içine taşındı, EDA yorumları ve baseline tablosu eklendi, ek EDA bölümleri (uç değerler, uzunluk ilişkisi, `<gap>` ve çelişkili tekrarlar) yazıldı, notebook `main` branch'ine alındı.
+
+## Kaggle Submission History
+
+Henüz Kaggle'a gönderim yapılmadı. Gönderimler Assignment 2'de bu tabloya eklenecek.
+
+| Tarih | Yöntem | Public score |
+|---|---|---|
+| - | - | - |
