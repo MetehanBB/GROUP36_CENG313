@@ -158,9 +158,3 @@ Late Submission adımları:
 |---|---|---|---|---|
 | 13.11.2026 | TF-IDF karakter + uzunluk sınırı (Late Submission) | 8.5489 | 8.1842 | [late_submission_score.png](submissions/late_submission_score.png) |
 
-## Progress Log
-
-- 2026-11-08: Mustafa veri dosyalarını repoya ekledi (`data files`, `Big Dataset` commit'leri).
-- 2026-11-09: Metehan Colab-GitHub bağlantısını kurdu; ilk EDA (veri boyutları, eksik değerler, uzunluk histogramları) ve üç baseline (Copy-input, sabit cümle, TF-IDF en yakın komşu) aynı train/validation bölmesiyle karşılaştırıldı; ilk notebook GitHub'a kaydedildi.
-- 2026-11-11: Notebook temizlendi, baseline kodları `src/models.py` içine taşındı, EDA yorumları ve baseline tablosu eklendi, ek EDA bölümleri (uç değerler, uzunluk ilişkisi, `<gap>` ve çelişkili tekrarlar) yazıldı, notebook `main` branch'ine alındı.
-- 2026-11-13: Notebook 7 zorunlu bölüme göre yeniden düzenlendi (Problem definition, Preprocessing, Kaggle submission, Conclusion eklendi). Resmi metrik (`sqrt(BLEU × chrF++)`) raporlanmaya başlandı; metrik fonksiyonundaki referans biçimi hatası ve temizleme fonksiyonundaki `<gap>` hatası düzeltildi. Karakter n-gram baseline'ı ve uzunluk sınırı eklendi (held-out 23.00 → 25.37). Veri `data/` klasörüne taşındı ve Git'ten çıkarıldı; `requirements.txt` kurulabilir hale getirildi; Kaggle gönderim notebook'u üretildi. Ardından hata kontrolü: bütün kırık biçimleri train ile tutarlı olarak `<gap>`'e indirildi, yorumlardaki her sayı notebook çıktısına bağlandı, tablo biçimleri ve bir font uyarısı düzeltildi. Seçilen baseline Kaggle'a Late Submission ile gönderildi: Private 8.1842, Public 8.5489.
