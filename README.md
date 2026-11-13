@@ -3,8 +3,8 @@
 ## Project Overview
 This repository contains the coursework and machine learning pipeline for the **Deep Past Challenge - Translate Akkadian to English** competition as part of the CENG313 course.
 
-> **Competition closed — evaluated on a held-out split.**
-> Yarışma 23 Mart 2026'da kapandı. Kaggle hâlâ *Late Submission* kabul ediyor; gönderim henüz yapılmadı. O zamana kadar skor, `train.csv` verisinin `train_test_split(test_size=0.2, random_state=42)` ile ayrılan %20'lik held-out kısmında raporlanıyor.
+> **Kaggle skoru (Late Submission, 13.11.2026): Private 8.1842 · Public 8.5489**
+> Yarışma 23 Mart 2026'da kapandı; gönderim *Late Submission* ile puanlandı (sıralamaya girmez). Ayar seçimi ve baseline karşılaştırması ayrıca `train.csv` verisinin `train_test_split(test_size=0.2, random_state=42)` ile ayrılan %20'lik held-out kısmında yapıldı.
 
 ## Team Members
 * **Metehan Bölükbaşı** - Student ID: `23118080031` - GitHub: `@MetehanBB`
@@ -31,7 +31,8 @@ GROUP36_CENG313/
 │   └── utils.py                     # compute_metrics, EDA grafikleri, save_submission
 ├── data/                            # Git'e eklenmez
 └── submissions/
-    └── kaggle_submission.ipynb      # Kaggle'a yüklenecek, otomatik üretilen notebook
+    ├── kaggle_submission.ipynb      # Kaggle'a gönderilen, otomatik üretilen notebook
+    └── late_submission_score.png    # Late Submission skor ekran görüntüsü
 ```
 
 ## Dataset
@@ -96,7 +97,7 @@ GitHub notebook'u görüntüleyemezse: [nbviewer](https://nbviewer.org/github/Me
 3. **EDA:** karakter ve kelime uzunluğu dağılımları, aykırı değerler, kaynak-hedef uzunluk ilişkisi, en sık tokenlar, Sümerogramlar ve determinatifler (`{d}`, `{ki}`), `<gap>` analizi, train-test yazım farkları, çelişkili tekrarlar.
 4. **Preprocessing:** `Ḫ/ḫ → H/h`, alt simge rakamlar, bütün kırık biçimlerinin (`[x]`, `…`, `<big_gap>`) train'deki gibi `<gap>` olarak standartlaştırılması, determinatif yazımı, akademik işaretlerin silinmesi; her adımın nedeni.
 5. **Baseline model:** train / validation / held-out bölmesi (%70 / %10 / %20, `random_state=42`) ve beş baseline.
-6. **Kaggle submission:** held-out skoru, leaderboard karşılaştırması, `submission.csv` ve Kaggle gönderim notebook'u.
+6. **Kaggle submission:** Late Submission skoru, held-out skoru, leaderboard karşılaştırması, `submission.csv` ve Kaggle gönderim notebook'u.
 7. **Conclusion:** bulgular ve Assignment 2 planı.
 
 Öne çıkan bulgular:
@@ -109,7 +110,13 @@ GitHub notebook'u görüntüleyemezse: [nbviewer](https://nbviewer.org/github/Me
 
 ## Results (Assignment 1)
 
-Resmi metrik: `Score = sqrt(BLEU × chrF++)`. Ayarlar validation üzerinde seçildi, son skor held-out %20'de bir kez ölçüldü.
+Resmi metrik: `Score = sqrt(BLEU × chrF++)`. Ayarlar validation üzerinde seçildi, held-out %20'de bir kez ölçüldü, sonra seçilen model tüm train ile kurulup Kaggle'a gönderildi.
+
+**Kaggle gizli test (Late Submission)** — seçilen baseline, tüm train ile kuruldu:
+
+| Baseline | Public | Private |
+|---|---|---|
+| TF-IDF karakter + uzunluk sınırı | 8.5489 | 8.1842 |
 
 **Held-out test (%20, 313 belge)** — model train + validation (%80) ile kuruldu:
 
@@ -131,7 +138,9 @@ Resmi metrik: `Score = sqrt(BLEU × chrF++)`. Ayarlar validation üzerinde seçi
 | TF-IDF karakter en yakın komşu (temiz metin) | 15.42 | 38.65 | 24.41 |
 | TF-IDF karakter + uzunluk sınırı (seçilen) | 15.97 | 38.40 | 24.76 |
 
-**Leaderboard ile karşılaştırma:** Yarışmanın birincisi public'te 41.67, private'ta 42.90 aldı; en çok oy alan public notebook 35.9, popüler başlangıç notebook'u (DPC Starter Infer) 26.8. Baseline'ımız (held-out 25.37) birincinin yaklaşık 16-17.5 puan gerisinde. Held-out belge düzeyinde, gizli test cümle düzeyinde olduğu için Kaggle skorunun 25.37'nin altında çıkmasını bekliyoruz.
+**Leaderboard ile karşılaştırma:** Yarışmanın birincisi public'te 41.67, private'ta 42.90 aldı; en çok oy alan public notebook 35.9, popüler başlangıç notebook'u (DPC Starter Infer) 26.8 (public). Baseline'ımız birincinin private'ta 34.71, public'te 33.12 puan gerisinde.
+
+**Held-out ile Kaggle arasındaki fark:** Aynı model held-out'ta 25.37, gizli testte 8.18 aldı. Belge düzeyindeki held-out, yarışmanın cümle düzeyindeki ve büyük olasılıkla train'de olmayan tabletlerden oluşan testini temsil etmiyor. Assignment 2'de modeller cümle düzeyinde ve tablet bazında ayrık bir doğrulama kümesinde karşılaştırılacak (ayrıntılar notebook'un 6.1 ve 7. bölümlerinde).
 
 ## Kaggle Submission History
 
@@ -145,13 +154,13 @@ Late Submission adımları:
 4. **Save Version → Save & Run All (Commit)**; çalışma bitince **Submit**.
 5. Skoru aşağıdaki tabloya yazın, ekran görüntüsünü `submissions/` klasörüne ekleyin.
 
-| Tarih | Yöntem | Public score | Private score |
-|---|---|---|---|
-| - | TF-IDF karakter + uzunluk sınırı (Late Submission bekleniyor) | - | - |
+| Tarih | Yöntem | Public score | Private score | Ekran görüntüsü |
+|---|---|---|---|---|
+| 13.11.2026 | TF-IDF karakter + uzunluk sınırı (Late Submission) | 8.5489 | 8.1842 | [late_submission_score.png](submissions/late_submission_score.png) |
 
 ## Progress Log
 
 - 2026-11-08: Mustafa veri dosyalarını repoya ekledi (`data files`, `Big Dataset` commit'leri).
 - 2026-11-09: Metehan Colab-GitHub bağlantısını kurdu; ilk EDA (veri boyutları, eksik değerler, uzunluk histogramları) ve üç baseline (Copy-input, sabit cümle, TF-IDF en yakın komşu) aynı train/validation bölmesiyle karşılaştırıldı; ilk notebook GitHub'a kaydedildi.
 - 2026-11-11: Notebook temizlendi, baseline kodları `src/models.py` içine taşındı, EDA yorumları ve baseline tablosu eklendi, ek EDA bölümleri (uç değerler, uzunluk ilişkisi, `<gap>` ve çelişkili tekrarlar) yazıldı, notebook `main` branch'ine alındı.
-- 2026-11-13: Notebook 7 zorunlu bölüme göre yeniden düzenlendi (Problem definition, Preprocessing, Kaggle submission, Conclusion eklendi). Resmi metrik (`sqrt(BLEU × chrF++)`) raporlanmaya başlandı; metrik fonksiyonundaki referans biçimi hatası ve temizleme fonksiyonundaki `<gap>` hatası düzeltildi. Karakter n-gram baseline'ı ve uzunluk sınırı eklendi (held-out 23.00 → 25.37). Veri `data/` klasörüne taşındı ve Git'ten çıkarıldı; `requirements.txt` kurulabilir hale getirildi; Kaggle gönderim notebook'u üretildi. Ardından hata kontrolü: bütün kırık biçimleri train ile tutarlı olarak `<gap>`'e indirildi, yorumlardaki her sayı notebook çıktısına bağlandı, tablo biçimleri ve bir font uyarısı düzeltildi.
+- 2026-11-13: Notebook 7 zorunlu bölüme göre yeniden düzenlendi (Problem definition, Preprocessing, Kaggle submission, Conclusion eklendi). Resmi metrik (`sqrt(BLEU × chrF++)`) raporlanmaya başlandı; metrik fonksiyonundaki referans biçimi hatası ve temizleme fonksiyonundaki `<gap>` hatası düzeltildi. Karakter n-gram baseline'ı ve uzunluk sınırı eklendi (held-out 23.00 → 25.37). Veri `data/` klasörüne taşındı ve Git'ten çıkarıldı; `requirements.txt` kurulabilir hale getirildi; Kaggle gönderim notebook'u üretildi. Ardından hata kontrolü: bütün kırık biçimleri train ile tutarlı olarak `<gap>`'e indirildi, yorumlardaki her sayı notebook çıktısına bağlandı, tablo biçimleri ve bir font uyarısı düzeltildi. Seçilen baseline Kaggle'a Late Submission ile gönderildi: Private 8.1842, Public 8.5489.
