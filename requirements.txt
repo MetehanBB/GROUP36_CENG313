@@ -1,23 +1,24 @@
-pandas = CSV dosyalarını okumak, verileri DataFrame olarak işlemek ve sonuç tabloları oluşturmak için kullanıldı.
+# Kurulum: pip install -r requirements.txt
 
-sacrebleu = Çeviri sonuçlarını BLEU ve chrF/chrF++ metrikleriyle değerlendirmek için kullanıldı.
+# CSV dosyalarını okumak, verileri DataFrame olarak işlemek ve sonuç tabloları oluşturmak için.
+pandas
+# Sayısal işlemler ve dizi işlemleri için.
+numpy
+# Veriyi eğitim/doğrulama/test olarak bölmek, TF-IDF özellikleri çıkarmak ve benzerlik hesaplamak için.
+scikit-learn
+# Çeviri sonuçlarını BLEU ve chrF++ metrikleriyle değerlendirmek için.
+sacrebleu
+# Grafik ve veri görselleştirmeleri oluşturmak için.
+matplotlib
+# Yarışma verisini Kaggle API ile indirmek için (veri data/ klasöründeyse gerekmez).
+kaggle
 
-scikit-learn = Veriyi eğitim ve doğrulama olarak bölmek, TF-IDF özellikleri çıkarmak ve benzerlik hesaplamak için kullanıldı.
-
-math = BLEU ve chrF++ skorlarının geometrik ortalamasını hesaplamak için kullanıldı.
-
-re = Metin temizleme sırasında düzenli ifadelerle gereksiz karakterleri ve boşlukları düzenlemek için kullanıldı.
-
-os = Çalışma dizinini, klasörleri ve dosya yollarını kontrol etmek için kullanıldı.
-
-subprocess = Git clone, git pull ve pip install gibi sistem komutlarını çalıştırmak için kullanıldı.
-
-sys = Python modül arama yoluna proje klasörünü eklemek için kullanıldı.
-
-numpy = Sayısal işlemler ve dizi işlemleri için kullanıldı.
-
-matplotlib = Grafik ve veri görselleştirmeleri oluşturmak için kullanıldı.
-
-seaborn = İstatistiksel veri görselleştirmeleri ve grafik stil ayarları için kullanıldı.
-
-collections = Counter sınıfı aracılığıyla elemanların tekrar sayılarını hesaplamak için kullanıldı.
+# Standart kütüphaneden kullanılanlar (kurulum gerektirmez):
+#   math        = BLEU ve chrF++ skorlarının geometrik ortalamasını hesaplamak için.
+#   re          = Metin temizleme sırasında düzenli ifadeler için.
+#   unicodedata = Unicode normalizasyonu (NFC) için.
+#   os          = Çalışma dizinini, klasörleri ve dosya yollarını kontrol etmek için.
+#   subprocess  = git clone, git pull ve pip install gibi sistem komutlarını çalıştırmak için.
+#   sys         = Python modül arama yoluna proje klasörünü eklemek için.
+#   collections = Counter ile elemanların tekrar sayılarını hesaplamak için.
+#   json        = Kaggle gönderim notebook'unu üretmek için.
