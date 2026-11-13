@@ -1,1 +1,12 @@
+# Yarışma verisi (Kaggle kuralları + dosya boyutu): asla commit edilmez
+data/
 deep-past-initiative-machine-translation/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# Üretilen çıktı
+submission.csv
